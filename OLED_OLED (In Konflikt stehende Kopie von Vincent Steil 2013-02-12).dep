@@ -1,0 +1,56 @@
+Dependencies for Project 'OLED', Target 'OLED': (DO NOT MODIFY !)
+F (.\OLEDTestMain.c)(0x511956DD)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I.. -I..\..\.. -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Luminary -o "oledtestmain.o" --omf_browse "oledtestmain.crf" --depend "oledtestmain.d")
+I (C:\Keil\ARM\ARMCC\bin\..\include\stdio.h)(0x4EB118D6)
+I (output.h)(0x4E36F662)
+I (pushbuttons.h)(0x5111C76E)
+I (C:\Keil\ARM\Inc\Luminary\lm3s1968.h)(0x4F588BC4)
+I (rit128x96x4.h)(0x4C51D872)
+I (alarm.h)(0x5119455D)
+I (hands.h)(0x51192944)
+I (personalSysTick.h)(0x51186C86)
+I (pll.h)(0x50AAAED5)
+I (Print_Time.h)(0x51191111)
+I (DAC.h)(0x50C2283F)
+F (.\Output.c)(0x4E370464)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I.. -I..\..\.. -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Luminary -o "output.o" --omf_browse "output.crf" --depend "output.d")
+I (C:\Keil\ARM\ARMCC\bin\..\include\stdio.h)(0x4EB118D6)
+I (rit128x96x4.h)(0x4C51D872)
+I (Output.h)(0x4E36F662)
+F (.\rit128x96x4.c)(0x4E320BC0)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I.. -I..\..\.. -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Luminary -o "rit128x96x4.o" --omf_browse "rit128x96x4.crf" --depend "rit128x96x4.d")
+I (inc/hw_ssi.h)(0x4C6185EC)
+I (inc/hw_memmap.h)(0x4C6185EC)
+I (inc/hw_sysctl.h)(0x4C6185EC)
+I (inc/hw_types.h)(0x4C6185EC)
+I (..\driverlib/debug.h)(0x4C6185EA)
+I (..\driverlib/gpio.h)(0x4C6185EA)
+I (..\driverlib/ssi.h)(0x5111ADF5)
+I (..\driverlib/sysctl.h)(0x4C6185EA)
+I (rit128x96x4.h)(0x4C51D872)
+F (.\Startup.s)(0x4E53B814)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1" -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Luminary -o "Startup.o" --depend "Startup.d")
+F (.\Pushbuttons.c)(0x51188DA0)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I.. -I..\..\.. -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Luminary -o "pushbuttons.o" --omf_browse "pushbuttons.crf" --depend "pushbuttons.d")
+I (C:\Keil\ARM\Inc\Luminary\lm3s1968.h)(0x4F588BC4)
+I (Pushbuttons.h)(0x5111C76E)
+I (C:\Keil\ARM\ARMCC\bin\..\include\stdio.h)(0x4EB118D6)
+I (Output.h)(0x4E36F662)
+F (.\Alarm.c)(0x511953A3)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I.. -I..\..\.. -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Luminary -o "alarm.o" --omf_browse "alarm.crf" --depend "alarm.d")
+I (Alarm.h)(0x5119455D)
+F (.\clockNumbers.c)(0x5118766F)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I.. -I..\..\.. -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Luminary -o "clocknumbers.o" --omf_browse "clocknumbers.crf" --depend "clocknumbers.d")
+I (clockNumbers.h)(0x51186875)
+I (C:\Keil\ARM\ARMCC\bin\..\include\string.h)(0x4EB118D6)
+I (rit128x96x4.h)(0x4C51D872)
+F (.\hands.c)(0x51187730)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I.. -I..\..\.. -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Luminary -o "hands.o" --omf_browse "hands.crf" --depend "hands.d")
+I (hands.h)(0x51192944)
+I (rit128x96x4.h)(0x4C51D872)
+I (clockNumbers.h)(0x51186875)
+F (.\personalSysTick.c)(0x51187EFC)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I.. -I..\..\.. -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Luminary -o "personalsystick.o" --omf_browse "personalsystick.crf" --depend "personalsystick.d")
+I (personalSysTick.h)(0x51186C86)
+F (.\PLL.c)(0x50AA9C22)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I.. -I..\..\.. -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Luminary -o "pll.o" --omf_browse "pll.crf" --depend "pll.d")
+F (.\Print_Time.c)(0x51191E2A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I.. -I..\..\.. -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Luminary -o "print_time.o" --omf_browse "print_time.crf" --depend "print_time.d")
+I (Print_Time.h)(0x51191111)
+I (output.h)(0x4E36F662)
+I (hands.h)(0x51192944)
+F (.\DAC.c)(0x50C2364F)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I.. -I..\..\.. -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Luminary -o "dac.o" --omf_browse "dac.crf" --depend "dac.d")
+I (DAC.h)(0x50C2283F)
+I (hw_types.h)(0x4C6185EC)
+I (sysctl.h)(0x4C6177DA)
+I (C:\Keil\ARM\Inc\Luminary\lm3s1968.h)(0x4F588BC4)
+F (..\driverlib\rvmdk\driverlib.lib)(0x4C6193FA)()
