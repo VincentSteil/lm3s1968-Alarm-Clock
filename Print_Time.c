@@ -1,5 +1,5 @@
 // Print_Time.c
-// Vincent Steil & William Kelsey
+// Vincent Steil && William Kelsey
 // various print functions for an alarm clock
 
 #include "Print_Time.h"
@@ -110,7 +110,6 @@ void print_screen(unsigned char print_boolean, unsigned long weekday, int second
             }
             break;
         } 
-				//printf("\n \n \n TIME");
 }
 
 void Print_Hour(int hour){

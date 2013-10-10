@@ -1,7 +1,6 @@
-//*************RIT128x96x4_ClearImage**************************************
-// Clears the RAM version of the image
-// Inputs: none
-// Outputs: none
+// Vincent Steil && William Kelsey
+// modified functions from rit128x96x4.h
+// original (C) by TI
 
 #include "hands.h"
 #include "rit128x96x4.h"

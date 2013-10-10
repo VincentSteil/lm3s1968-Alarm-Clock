@@ -27,13 +27,7 @@
 #include "hw_types.h"
 #include "sysctl.h"
 #include "lm3s1968.h"
-/*
-#define GPIO_PORTF_DATA_R		(*((volatile unsigned long *)0x400253FC))
-#define GPIO_PORTF_DIR_R		(*((volatile unsigned long *)0x40025400))
-#define GPIO_PORTF_AFSEL_R	(*((volatile unsigned long *)0x40025420))
-#define GPIO_PORTF_DEN_R		(*((volatile unsigned long *)0x4002551C))
-#define SYSCTL_RCGC2_R    	(*((volatile unsigned long *)0x400FE108))
-*/
+
 
 //	DAC_Init
 //	Initialises a 4-bit DAC interface for use with headphones and the LM1968 microcontroller
@@ -60,26 +54,3 @@ void DAC_Out(unsigned char data){
 		GPIO_PORTF_DATA_R |= data;	// write to bits 0-3
 }
 
-
-
-//MY NEW CODE //
-/*
-void DAC_Init(void){
-  unsigned long wait;
-  SYSCTL_RCGC2_R |= 0x00000080; 	// clock to Port H >> HGFE DCBA = 0x80
-  wait = 0;
-  wait++;
-  GPIO_PORTH_DEN_R |= 0x03;     					// data enable register
-  GPIO_PORTH_AFSEL_R &= 0x00;		  				// Alternative function register    
-  GPIO_PORTH_DIR_R |= 0x03;								// PH0-PF1 outputs
-}
-
-//	DAC_Out
-//	Outputs a signal to the four ports 
-//	Input: R0 (least significant four bits)
-//	Output: none
-
-void DAC_Out(int data){
-		GPIO_PORTH_DATA_R |= data;	// write to bits 0-1
-		GPIO_PORTH_DATA_R &= 0x1;		// write to bits 0-1
-}*/

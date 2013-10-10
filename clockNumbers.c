@@ -26,20 +26,5 @@ void clockNumbers(void){
 	RIT128x96x4StringDraw("2", 95+shiftX, 25+shiftY, ucLevel);
 	RIT128x96x4StringDraw("1", 80+shiftX, 10+shiftY, ucLevel);
 	
-/* Use this function to draw the minute 'ticks'*/	
-/*
-	for(i=0;i++;i<4) {
-		RIT128x96x4ImageDraw(ucLevel, 60 ), 45 + (y*5), 2, 2);
-	
-		RIT128x96x4ImageDraw(ucLevel, 60 + (x*5)), 45 + (y*20), 2, 2);
-		RIT128x96x4ImageDraw(ucLevel, 60 + (x*15)), 45 + (y*15), 2, 2);
-		RIT128x96x4ImageDraw(ucLevel, 60 + (x*20)), 45 + (y*5), 2, 2);
-
-		
-		x=-x;
-		RIT128x96x4ImageDraw(ucLevel, 60 + (x*15)), 45 + (y*20), 2, 2);
-		RIT128x96x4ImageDraw(ucLevel, 60 + (x*5)), 45 + (y*15), 2, 2);
-		RIT128x96x4ImageDraw(ucLevel, 60 + (x*20)), 45 + (y*5), 2, 2);
-	}*/
 }
 

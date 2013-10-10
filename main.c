@@ -16,29 +16,7 @@
 #include "pll.h"
 #include "Print_Time.h"
 #include "DAC.h"
-/*
-// delay function for testing from sysctl.c
-// which delays 3*ulCount cycles
-#ifdef __TI_COMPILER_VERSION__
-	//Code Composer Studio Code
-	void Delay(unsigned long ulCount){
-	__asm (	"    subs    r0, #1\n"
-			"    bne     Delay\n"
-			"    bx      lr\n");
-}
 
-#else
-	//Keil uVision Code
-	__asm void
-	Delay(unsigned long ulCount)
-	{
-    subs    r0, #1
-    bne     Delay
-    bx      lr
-	}
-
-#endif
-*/
 
 
 // select == 0: choose weekday of alarm
@@ -80,17 +58,17 @@ volatile unsigned long TimerCount = 0;							// for debugging only
 
 void LED_Init(void){
   signed long wait;
-	SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOG; // activate port G
+	SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOG;             // activate port G
   wait = 0;
 	wait++;
-  GPIO_PORTG_DIR_R |= 0x0F;             // make PG2 out (built-in LED)
-  GPIO_PORTG_AFSEL_R &= 0x00;          // disable alt func on PG2
-  GPIO_PORTG_DEN_R |= 0x0F;             // enable digital I/O on PG2
+  GPIO_PORTG_DIR_R |= 0x0F;                         // make PG2 out (built-in LED)
+  GPIO_PORTG_AFSEL_R &= 0x00;                       // disable alt func on PG2
+  GPIO_PORTG_DEN_R |= 0x0F;                         // enable digital I/O on PG2
 }
 void LED_Toggle(void){
-	GPIO_PORTG_DATA_R ^= 0x04;					 // toggle PG2
+	GPIO_PORTG_DATA_R ^= 0x04;                        // toggle PG2
 }
-void Timer0B_Init(unsigned short period){			// init Timer0B
+void Timer0B_Init(unsigned short period){           // init Timer0B
 	SYSCTL_RCGC1_R |= SYSCTL_RCGC1_TIMER0;
 	TimerCount = 0;
 	TIMER0_CTL_R &= ~0x00000100;
@@ -107,26 +85,26 @@ void Timer0B_Init(unsigned short period){			// init Timer0B
 
 int main(void){
   PLL_Init();
-  SysTick_Init(500000);
+  SysTick_Init(500000);                             // 20ns*500000 = 10ms period
   LED_Init();
   LED_Toggle();
   Output_Color(15);
-  Output_Init();
-  RIT128x96x4Init(1000000);
+  Output_Init();                                    // printf now points to the oled
+  RIT128x96x4Init(1000000);                         // SPI clock period 20ms
   Pushbuttons_Init();
   Alarm_Init();
   DAC_Init();
-  Timer0B_Init(4535);
+  Timer0B_Init(4535);                               // 11025 Hz frequency for audio
   EnableInterrupts();
 	TIMER0_CTL_R |= 0x00000100;
 
   print_bool = 1;
-  select = 4;
+  select = 4;                                       // start system in normal alarm mode
   select_timer = 0;
   alarms_enabled = 1;
-  time_minutes = 5;
+  time_minutes = 0;
   time_hours = 0;
-  time_seconds = 45;
+  time_seconds = 0;
   up_pressed = 0;
   down_pressed = 0;
   select_pressed = 0;
@@ -195,7 +173,6 @@ int main(void){
           select++;
           select %= 4;
 					//If the right button is pressed, display the current time for changing
-          //print_screen(print_bool, Alarm_CurrentDay(), 0, Alarm_ReturnMinute(), Alarm_ReturnHour(), Alarm_ReturnStatus(), select);
 					if(alarm_change == 0) print_screen(print_bool, time_weekday, 0, time_minutes, time_hours, Alarm_ReturnStatus(), select);
 					else print_screen(print_bool, Alarm_CurrentDay(), 0, Alarm_ReturnMinute(), Alarm_ReturnHour(), Alarm_ReturnStatus(), select);
         }
@@ -217,10 +194,8 @@ int main(void){
               Alarm_ToggleEnable();
               break;
           }
-          //print_screen(print_bool, time_weekday, 0, time_minutes, time_hours, Alarm_ReturnStatus(), select);
 					if(alarm_change == 1) print_screen(print_bool, Alarm_CurrentDay(), 0, Alarm_ReturnMinute(), Alarm_ReturnHour(), Alarm_ReturnStatus(), select);
-					else print_screen(print_bool, time_weekday, 0, time_minutes, time_hours, Alarm_ReturnStatus(), select);
-					
+					else print_screen(print_bool, time_weekday, 0, time_minutes, time_hours, Alarm_ReturnStatus(), select);					
 				}
 				else if(down_pressed && !(alarm_change)) {
 					down_pressed = 0;
@@ -238,10 +213,8 @@ int main(void){
               Alarm_ToggleEnable();
               break;
           }
-          //print_screen(print_bool, time_weekday, 0, time_minutes, time_hours, Alarm_ReturnStatus(), select);
 					if(alarm_change == 1) print_screen(print_bool, Alarm_CurrentDay(), 0, Alarm_ReturnMinute(), Alarm_ReturnHour(), Alarm_ReturnStatus(), select);
-					else print_screen(print_bool, time_weekday, 0, time_minutes, time_hours, Alarm_ReturnStatus(), select);
-					
+					else print_screen(print_bool, time_weekday, 0, time_minutes, time_hours, Alarm_ReturnStatus(), select);					
 				}
 				
         else if(up_pressed){
@@ -260,7 +233,6 @@ int main(void){
               Alarm_ToggleEnable();
               break;
           }
-         // print_screen(print_bool, Alarm_CurrentDay(), 0, Alarm_ReturnMinute(), Alarm_ReturnHour(), Alarm_ReturnStatus(), select);
 					if(alarm_change == 1) print_screen(print_bool, Alarm_CurrentDay(), 0, Alarm_ReturnMinute(), Alarm_ReturnHour(), Alarm_ReturnStatus(), select);
 					else print_screen(print_bool, time_weekday, 0, time_minutes, time_hours, Alarm_ReturnStatus(), select);
         }
@@ -280,7 +252,6 @@ int main(void){
               Alarm_ToggleEnable();
               break;
           }
-         // print_screen(print_bool, Alarm_CurrentDay(), 0, Alarm_ReturnMinute(), Alarm_ReturnHour(), Alarm_ReturnStatus(), select);
 					if(alarm_change == 1) print_screen(print_bool, Alarm_CurrentDay(), 0, Alarm_ReturnMinute(), Alarm_ReturnHour(), Alarm_ReturnStatus(), select);
 					else print_screen(print_bool, time_weekday, 0, time_minutes, time_hours, Alarm_ReturnStatus(), select);
         }
@@ -309,7 +280,8 @@ int main(void){
 
 
 void SysTick_Handler(void){
-  
+    // read pushbuttons
+    // I should refactor this to use edge triggered interrupts
     if(Pushbuttons_Up_Read() || Pushbuttons_Down_Read() || Pushbuttons_Left_Read() || Pushbuttons_Right_Read() || Pushbuttons_Select_Read()){
       button_pressed++;
     }
@@ -341,28 +313,16 @@ void SysTick_Handler(void){
     }
 }
 
-void Timer0B_Handler(void){																	// handles sound output via global vars
+void Timer0B_Handler(void){																	
+  // handles sound output by cycling through a const char array of 4 bit data when global flags are set
 	int z, k;
 	TIMER0_ICR_R = 0x00000100;
 	if(alarm_sound) {
-		//for (k=100;k<6000;k+=100) {
-		//while(alarm_sound_count<150){
 			DAC_Out(SmallExplosion[alarm_sound_count]);
-			alarm_sound_count++;
-			//	for(z=0;z<k;z++) {
-			//		DAC_Out(1);		//Set pin +ve for 25K/50M = 0.5mS
-			//	}
-			//	for(z=0;z<k;z++) {
-			//		DAC_Out(0);			//Set pin -ve for the same time
-			//	}
-			//}
-			
 			alarm_sound_count++;
 			if(alarm_sound_count>1500){
 				alarm_sound = 0;
 				alarm_sound_count = 0;
 			}
-		//}
 	}
-	
 }

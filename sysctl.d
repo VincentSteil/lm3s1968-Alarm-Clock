@@ -1,1 +1,0 @@
-sysctl.o: sysctl.c

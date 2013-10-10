@@ -1,10 +1,7 @@
-/*This is a SysTick file written by team
+/*
+This is a SysTick file written by team
 William Kelsey, wdk279
 Vincent Steil, vjs432
-
-
-WHAT IS THE CORE CLOCK SPEED??
-
 */
 #include "personalSysTick.h"
 
@@ -46,18 +43,3 @@ void SysTick_10ms_wait(unsigned long delay){
   }
 }
 
-
-/*Converts number of seconds into mins, hours and days*/
-/*number of seconds is a counter incremented every */
-/*
-void timeKeeper(int NumberOfSeconds) {
-	minutes = NumberOfSeconds % 60;
-	hours = NumberOfSeconds/(60*60);
-	days = NumberOfSeconds/(60*60*24);
-	
-	//Worth resetting the counter once a week. int is 32 bits so can store 1 week of seconds
-	if((days == 7) && (minutes == 0) && (seconds ==0)) {
-		NumberOfSeconds =0;
-	}
-}
-*/
